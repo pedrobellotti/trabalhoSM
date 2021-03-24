@@ -11,7 +11,7 @@ import glob
 import subprocess
 import sys
 
-video = 'bola.mp4'
+video = sys.argv[1]
 
 #Salva todos os frames do video em um arquivo
 def divideFrames(video):
@@ -76,4 +76,4 @@ print (execucao)
 vetorMovimento(video)
 
 #Criando video mostrando os macroblocos
-#macroblocos(video)
+macroblocos(video)

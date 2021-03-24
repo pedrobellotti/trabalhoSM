@@ -19,6 +19,7 @@ def upload_file():
       name = f.filename.rsplit('.', 1)[0].lower()
       filename = secure_filename(name + "-" + timestamp)
       f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+      os.system('python3 processa.py ' + filename)
       return 'Arquivo enviado com sucesso!'
 
 if __name__ == '__main__':

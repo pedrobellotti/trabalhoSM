@@ -15,29 +15,35 @@ video = sys.argv[1]
 
 #Salva todos os frames do video em um arquivo
 def divideFrames(video):
-    os.system('ffmpeg -i Videos/'+video+' Frames/Todos/frame%03d-'+video+'.jpg')
+    os.system('ffmpeg -i static/'+video+' Frames/Todos/frame%03d-'+video+'.jpg')
 
 #Divide o video em frames I, B e P
 def divideFramesIBP(video):
     #Pegando os frames I
-    os.system('ffmpeg -i Videos/'+video+' -vf "select=\'eq(pict_type\,I)" -vsync 0 -frame_pts 1 Frames/Keyframes/I-frame-%02d-'+video+'.jpg')
+    os.system('ffmpeg -i static/'+video+' -vf "select=\'eq(pict_type\,I)" -vsync 0 -frame_pts 1 Frames/Keyframes/I-frame-%02d-'+video+'.jpg')
     #Pegando os frames B
-    os.system('ffmpeg -i Videos/'+video+' -vf "select=\'eq(pict_type\,B)" -vsync 0 -frame_pts 1 Frames/Keyframes/B-frame-%02d-'+video+'.jpg')
+    os.system('ffmpeg -i static/'+video+' -vf "select=\'eq(pict_type\,B)" -vsync 0 -frame_pts 1 Frames/Keyframes/B-frame-%02d-'+video+'.jpg')
     #Pegando os frames P
-    os.system('ffmpeg -i Videos/'+video+' -vf "select=\'eq(pict_type\,P)" -vsync 0 -frame_pts 1 Frames/Keyframes/P-frame-%02d-'+video+'.jpg')
+    os.system('ffmpeg -i static/'+video+' -vf "select=\'eq(pict_type\,P)" -vsync 0 -frame_pts 1 Frames/Keyframes/P-frame-%02d-'+video+'.jpg')
 
 #Cria um video mostrando o vetor de movimento de cada frame
 def vetorMovimento(video):
     currentDir = os.getcwd()
     os.chdir('ffmpeg-3.1.11')
-    os.system('./ffmpeg -flags2 +export_mvs -i ../Videos/'+video+' -vf codecview=mv=pf+bf+bb ../Videos/'+video+'-vetorMovimento.mp4')
+    saida = "../static/"+video+"-VM.mp4"
+    os.system('./ffmpeg -flags2 +export_mvs -i ../static/'+video+' -vf codecview=mv=pf+bf+bb ' + saida)
+    os.system('ffmpeg -i '+saida+' ../static/'+video+'-vetorMovimento.mp4')
+    os.system('rm ' + saida)
     os.chdir(currentDir)
 
 #Cria um video mostrando os macroblocos de cada frame
 def macroblocos(video):
     currentDir = os.getcwd()
     os.chdir('ffmpeg-3.1.11')
-    os.system('./ffmpeg -debug vis_mb_type -i ../Videos/'+video+' ../Videos/'+video+'-macroblocos.mp4')
+    saida = "../static/"+video+"-MB.mp4"
+    os.system('./ffmpeg -debug vis_mb_type -i ../static/'+video+' '+saida)
+    os.system('ffmpeg -i '+saida+' ../static/'+video+'-macroblocos.mp4')
+    os.system('rm ' + saida)
     os.chdir(currentDir)
 
 #Imprimindo quantos frames foram criados de cada
@@ -56,7 +62,7 @@ print("Total de frames P: ", str(totalP))
 
 #Ordem de execucao de frames
 '''
-lista = subprocess.check_output('ffprobe -select_streams v -show_frames -show_entries frame=pict_type -of csv Videos/'+video, shell=True).decode(sys.stdout.encoding)
+lista = subprocess.check_output('ffprobe -select_streams v -show_frames -show_entries frame=pict_type -of csv static/'+video, shell=True).decode(sys.stdout.encoding)
 lista = lista.replace(","," ")
 execucao = []
 c = 0

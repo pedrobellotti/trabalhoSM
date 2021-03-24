@@ -3,12 +3,12 @@ from flask import Flask, render_template, request
 from werkzeug.utils import secure_filename
 from werkzeug.datastructures import  FileStorage
 from datetime import datetime
-app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = './Videos/'
+app = Flask(__name__, static_folder='static')
+app.config['UPLOAD_FOLDER'] = './static/'
 
 @app.route('/')
 def uploader_file():
-   return render_template('index.html')
+   return render_template('index.html', teste='oi')
 
 @app.route('/uploader', methods = ['GET', 'POST'])
 def upload_file():
@@ -20,7 +20,7 @@ def upload_file():
       filename = secure_filename(name + "-" + timestamp)
       f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
       os.system('python3 processa.py ' + filename)
-      return 'Arquivo enviado com sucesso!'
+      return render_template('sucesso.html', filename=filename)
 
 if __name__ == '__main__':
    app.run(debug = True)

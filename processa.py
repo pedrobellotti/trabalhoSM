@@ -15,16 +15,16 @@ video = sys.argv[1]
 
 #Salva todos os frames do video em um arquivo
 def divideFrames(video):
-    os.system('ffmpeg -i static/'+video+' Frames/Todos/frame%03d-'+video+'.jpg')
+    os.system('ffmpeg -i static/'+video+' Frames/Todos/'+video+'-frame%03d.jpg')
 
 #Divide o video em frames I, B e P
 def divideFramesIBP(video):
     #Pegando os frames I
-    os.system('ffmpeg -i static/'+video+' -vf "select=\'eq(pict_type\,I)" -vsync 0 -frame_pts 1 Frames/Keyframes/I-frame-%02d-'+video+'.jpg')
+    os.system('ffmpeg -i static/'+video+' -vf "select=\'eq(pict_type\,I)" -vsync 0 -frame_pts 1 Frames/Keyframes/'+video+'-Iframe-%02d.jpg')
     #Pegando os frames B
-    os.system('ffmpeg -i static/'+video+' -vf "select=\'eq(pict_type\,B)" -vsync 0 -frame_pts 1 Frames/Keyframes/B-frame-%02d-'+video+'.jpg')
+    os.system('ffmpeg -i static/'+video+' -vf "select=\'eq(pict_type\,B)" -vsync 0 -frame_pts 1 Frames/Keyframes/'+video+'-Bframe-%02d.jpg')
     #Pegando os frames P
-    os.system('ffmpeg -i static/'+video+' -vf "select=\'eq(pict_type\,P)" -vsync 0 -frame_pts 1 Frames/Keyframes/P-frame-%02d-'+video+'.jpg')
+    os.system('ffmpeg -i static/'+video+' -vf "select=\'eq(pict_type\,P)" -vsync 0 -frame_pts 1 Frames/Keyframes/'+video+'-Pframe-%02d.jpg')
 
 #Cria um video mostrando o vetor de movimento de cada frame
 def vetorMovimento(video):
@@ -47,9 +47,9 @@ def macroblocos(video):
     os.chdir(currentDir)
 
 #Imprimindo quantos frames foram criados de cada
-'''
 divideFrames(video)
 divideFramesIBP(video)
+'''
 total = len(glob.glob1('Frames/Todos',"frame*"))
 totalI = len(glob.glob1('Frames/Keyframes',"I-*"))
 totalB = len(glob.glob1('Frames/Keyframes',"B-*"))

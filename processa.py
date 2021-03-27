@@ -1,6 +1,10 @@
 '''
-Videos de referencia: https://www.youtube.com/watch?v=8yOMflB0AZU
-https://www.youtube.com/watch?v=k6Bg_kOZn2M
+Videos de referencia:
+Bola: https://www.youtube.com/watch?v=8yOMflB0AZU
+Pessoas: https://www.youtube.com/watch?v=k6Bg_kOZn2M
+Natureza: https://www.youtube.com/watch?v=668nUCeBHyY
+Chute: https://www.youtube.com/watch?v=J_MJ_qJF1Ns
+Basquete: https://www.youtube.com/watch?v=E1RjWw4ZY_A
 
 Referencia FFMPEG
 https://trac.ffmpeg.org/wiki/Debug/MacroblocksAndMotionVectors

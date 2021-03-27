@@ -24,15 +24,15 @@
         <div id="spoiler" style="display:none">
             <table border="true">
             <tbody><tr><th> Cor </th><th> Explicação
-            </th></tr><tr><td> <img src="../static/patch1.png"> </td><td style="text-align: center">  Sem perdas (amostras brutas sem previsão)
-            </td></tr><tr><td> <img src="../static/patch2.png"> </td><td style="text-align: center">  16x16 com previsão intra-quadro    
-            </td></tr><tr><td> <img src="../static/patch3.png"> </td><td style="text-align: center">  4x4 com previsão intra-quadro
-            </td></tr><tr><td> <img src="../static/patch4.png"> </td><td style="text-align: center">  Nenhum vetor de movimento é enviado (quadros B)
-            </td></tr><tr><td> <img src="../static/patch5.png"> </td><td style="text-align: center">  Pula macrobloco 16x16 (quadros P ou B)
-            </td></tr><tr><td> <img src="../static/patch6.png"> </td><td style="text-align: center">  Compensação de movimento global (não relevante para H.264)
-            </td></tr><tr><td> <img src="../static/patch7.png"> </td><td style="text-align: center">  Referência ao passado (lista 0, quadros P ou B)
-            </td></tr><tr><td> <img src="../static/patch8.png"> </td><td style="text-align: center">  Referência ao futuro (lista 1, quadros B)
-            </td></tr><tr><td> <img src="../static/patch9.png"> </td><td style="text-align: center">  Referência ao passado e futuro (listas 1 e 2, quadros B)
+            </th></tr><tr><td> <img src={{ url_for('static', filename='patch1.png') }}> </td><td style="text-align: center">  Sem perdas (amostras brutas sem previsão)
+            </td></tr><tr><td> <img src={{ url_for('static', filename='patch2.png') }}> </td><td style="text-align: center">  16x16 com previsão intra-quadro    
+            </td></tr><tr><td> <img src={{ url_for('static', filename='patch3.png') }}> </td><td style="text-align: center">  4x4 com previsão intra-quadro
+            </td></tr><tr><td> <img src={{ url_for('static', filename='patch4.png') }}> </td><td style="text-align: center">  Nenhum vetor de movimento é enviado (quadros B)
+            </td></tr><tr><td> <img src={{ url_for('static', filename='patch5.png') }}> </td><td style="text-align: center">  Pula macrobloco 16x16 (quadros P ou B)
+            </td></tr><tr><td> <img src={{ url_for('static', filename='patch6.png') }}> </td><td style="text-align: center">  Compensação de movimento global (não relevante para H.264)
+            </td></tr><tr><td> <img src={{ url_for('static', filename='patch7.png') }}> </td><td style="text-align: center">  Referência ao passado (lista 0, quadros P ou B)
+            </td></tr><tr><td> <img src={{ url_for('static', filename='patch8.png') }}> </td><td style="text-align: center">  Referência ao futuro (lista 1, quadros B)
+            </td></tr><tr><td> <img src={{ url_for('static', filename='patch9.png') }}> </td><td style="text-align: center">  Referência ao passado e futuro (listas 1 e 2, quadros B)
             </td></tr></tbody>
             </table>
         </div>

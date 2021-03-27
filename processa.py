@@ -19,16 +19,22 @@ video = sys.argv[1]
 
 #Salva todos os frames do video em um arquivo
 def divideFrames(video):
-    os.system('ffmpeg -i static/'+video+' Frames/Todos/'+video+'-frame%03d.jpg')
+    currentDir = os.getcwd()
+    os.chdir('ffmpeg-3.1.11')
+    os.system('./ffmpeg -i ../static/'+video+' ../Frames/Todos/'+video+'-frame%03d.jpg')
+    os.chdir(currentDir)
 
 #Divide o video em frames I, B e P
 def divideFramesIBP(video):
+    currentDir = os.getcwd()
+    os.chdir('ffmpeg-3.1.11')
     #Pegando os frames I
-    os.system('ffmpeg -i static/'+video+' -vf "select=\'eq(pict_type\,I)" -vsync 0 -frame_pts 1 Frames/Keyframes/'+video+'-Iframe-%02d.jpg')
+    os.system('./ffmpeg -i ../static/'+video+' -vf "select=\'eq(pict_type\,I)" -vsync 0 ../Frames/Keyframes/'+video+'-Iframe-%02d.jpg')
     #Pegando os frames B
-    os.system('ffmpeg -i static/'+video+' -vf "select=\'eq(pict_type\,B)" -vsync 0 -frame_pts 1 Frames/Keyframes/'+video+'-Bframe-%02d.jpg')
+    os.system('./ffmpeg -i ../static/'+video+' -vf "select=\'eq(pict_type\,B)" -vsync 0 ../Frames/Keyframes/'+video+'-Bframe-%02d.jpg')
     #Pegando os frames P
-    os.system('ffmpeg -i static/'+video+' -vf "select=\'eq(pict_type\,P)" -vsync 0 -frame_pts 1 Frames/Keyframes/'+video+'-Pframe-%02d.jpg')
+    os.system('./ffmpeg -i ../static/'+video+' -vf "select=\'eq(pict_type\,P)" -vsync 0 ../Frames/Keyframes/'+video+'-Pframe-%02d.jpg')
+    os.chdir(currentDir)
 
 #Cria um video mostrando o vetor de movimento de cada frame
 def vetorMovimento(video):

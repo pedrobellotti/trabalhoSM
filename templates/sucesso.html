@@ -20,10 +20,28 @@
         Tag vídeo não suportada pelo browser!.
     </video> 
     <h2>Vídeo com macroblocos:</h2>
+    <div class="explicacao">
+        <div id="spoiler" style="display:none">
+            <table border="true">
+            <tbody><tr><th> Cor </th><th> Explicação
+            </th></tr><tr><td> <img src="../static/patch1.png"> </td><td style="text-align: center">  Sem perdas (amostras brutas sem previsão)
+            </td></tr><tr><td> <img src="../static/patch2.png"> </td><td style="text-align: center">  16x16 com previsão intra-quadro    
+            </td></tr><tr><td> <img src="../static/patch3.png"> </td><td style="text-align: center">  4x4 com previsão intra-quadro
+            </td></tr><tr><td> <img src="../static/patch4.png"> </td><td style="text-align: center">  Nenhum vetor de movimento é enviado (quadros B)
+            </td></tr><tr><td> <img src="../static/patch5.png"> </td><td style="text-align: center">  Pula macrobloco 16x16 (quadros P ou B)
+            </td></tr><tr><td> <img src="../static/patch6.png"> </td><td style="text-align: center">  Compensação de movimento global (não relevante para H.264)
+            </td></tr><tr><td> <img src="../static/patch7.png"> </td><td style="text-align: center">  Referência ao passado (lista 0, quadros P ou B)
+            </td></tr><tr><td> <img src="../static/patch8.png"> </td><td style="text-align: center">  Referência ao futuro (lista 1, quadros B)
+            </td></tr><tr><td> <img src="../static/patch9.png"> </td><td style="text-align: center">  Referência ao passado e futuro (listas 1 e 2, quadros B)
+            </td></tr></tbody>
+            </table>
+        </div>
+        <button type="button" onclick="if(document.getElementById('spoiler') .style.display=='none') {document.getElementById('spoiler') .style.display=''}else{document.getElementById('spoiler') .style.display='none'}">O que são as cores do vídeo?</button>
+    </div> <br>
     <video width="854" height="480" controls="" autoplay="" name="media2">
         <source src={{ url_for('static', filename=macroblocos) }} type="video/mp4">
         Tag vídeo não suportada pelo browser!.
-    </video> 
+    </video>
     <h2>Vídeo com vetores de movimento:</h2>
     <video width="854" height="480" controls="" autoplay="" name="media3">
         <source src={{ url_for('static', filename=movimento) }} type="video/mp4">
